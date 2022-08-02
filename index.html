@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
     <script
@@ -74,7 +75,7 @@
             float: left;
         }
 
-        .color-btn{
+        .color-btn {
             width: 30px;
             height: 30px;
             border-radius: 15px;
@@ -84,6 +85,8 @@
         }
 
         .upload-button {
+            text-align: center;
+            line-height: 1.2in;
             position:absolute;
             background-color: gray;
             opacity: 0.2;
@@ -92,8 +95,7 @@
         }
 
         .btn-container {
-            position:absolute;
-            background-color: black;
+            margin-bottom: 10px;
         }
 
         .image-upload {
@@ -104,12 +106,13 @@
             margin-bottom: 20px;
             position:absolute;
         }
+
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="buttons">
+        <div class="btn-container">
             <button class="btn" onClick="window.location.reload()">refresh</button>
             <button class="btn" id="save">save</button>
 
@@ -123,28 +126,28 @@
             <div class="white-box">
                 <div class="image-show" id="image-show1"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile1" class="upload-button" id="upload-button1"></label>
+                    <label for="chooseFile1" class="upload-button" id="upload-button1">Click Here</label>
                     <input type="file" id="chooseFile1" name="chooseFile" accept="image/*" onchange="loadFile(this, 1)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show2"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile2" class="upload-button" id="upload-button2"></label>
+                    <label for="chooseFile2" class="upload-button" id="upload-button2">Click Here</label>
                     <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile(this, 2)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show3"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile3" class="upload-button" id="upload-button3"></label>
+                    <label for="chooseFile3" class="upload-button" id="upload-button3">Click Here</label>
                     <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile(this, 3)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show4"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile4" class="upload-button" id="upload-button4"></label>
+                    <label for="chooseFile4" class="upload-button" id="upload-button4">Click Here</label>
                     <input type="file" id="chooseFile4" name="chooseFile" accept="image/*" onchange="loadFile(this, 4)">
                 </form>
             </div>
