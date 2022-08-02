@@ -4,9 +4,6 @@ submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 function showImage() {
     var newImage = document.getElementById('image-show').lastElementChild;
     newImage.style.visibility = "visible";
-
-    // document.getElementById('image-upload').style.visibility = 'hidden';
-
     document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
 }
 
