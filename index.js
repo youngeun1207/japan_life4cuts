@@ -1,8 +1,12 @@
 var submit = document.getElementById('submitButton');
 submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
+var num = 1;
+
 function showImage() {
-    var newImage = document.getElementById('image-show').lastElementChild;
+    var image_id = 'image-show' + String(num);
+    num++;
+    var newImage = document.getElementById(image_id).lastElementChild;
     newImage.style.visibility = "visible";
 
     // document.getElementById('image-upload').style.visibility = 'hidden';
