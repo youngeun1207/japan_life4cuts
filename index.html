@@ -70,15 +70,23 @@
             text-align: center;
             border-radius: 15px;
             border: none;
-            margin-bottom: 5px;
+            margin-right: 5px;
+            float: left;
         }
-        .button {
+
+        .color-btn{
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            border: none;
             float: right;
+            margin-right: 5px;
         }
 
         .upload-button {
             position:absolute;
-            opacity: 0;
+            background-color: gray;
+            opacity: 0.2;
             height: 1.2in;
             width: 1.8in;
         }
@@ -87,7 +95,7 @@
             position:absolute;
             background-color: black;
         }
-        
+
         .image-upload {
             flex: 1;
             display: flex;
@@ -103,38 +111,44 @@
     <div class="container">
         <div class="buttons">
             <button class="btn" onClick="window.location.reload()">refresh</button>
-            <button class="btn" id="save">save</button></div>
+            <button class="btn" id="save">save</button>
 
+            <button class="color-btn" id="color-pink"></button>
+            <button class="color-btn" id="color-yellow"></button>
+            <button class="color-btn" id="color-mint"></button>
+            <button class="color-btn" id="color-purple"></button>
+            <button class="color-btn" id="color-white"></button>
+        </div>
         <div class="background-box" id="downloadImage">
             <div class="white-box">
                 <div class="image-show" id="image-show1"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile1" class="upload-button"></label>
+                    <label for="chooseFile1" class="upload-button" id="upload-button1"></label>
                     <input type="file" id="chooseFile1" name="chooseFile" accept="image/*" onchange="loadFile(this, 1)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show2"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile2" class="upload-button"></label>
+                    <label for="chooseFile2" class="upload-button" id="upload-button2"></label>
                     <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile(this, 2)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show3"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile3" class="upload-button"></label>
+                    <label for="chooseFile3" class="upload-button" id="upload-button3"></label>
                     <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile(this, 3)">
                 </form>
             </div>
             <div class="white-box">
                 <div class="image-show" id="image-show4"></div>
                 <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile4" class="upload-button"></label>
+                    <label for="chooseFile4" class="upload-button" id="upload-button4"></label>
                     <input type="file" id="chooseFile4" name="chooseFile" accept="image/*" onchange="loadFile(this, 4)">
                 </form>
             </div>
-            <div class="logo-text">
+            <div class="logo-text" id="logo-text" >
                 Life 4 Cuts
             </div>
         </div>
@@ -156,6 +170,55 @@
 
                     });
 
+                });
+
+            });
+
+        </script>
+        <script type="text/javascript">
+            document.getElementById("color-pink").style.cssText= 'background-color : #ff9797;';
+            document.getElementById("color-yellow").style.cssText= 'background-color : #ffcc00;';
+            document.getElementById("color-mint").style.cssText= 'background-color : #7bcabf;';
+            document.getElementById("color-purple").style.cssText= 'background-color : #c08bbc;';
+            document.getElementById("color-white").style.cssText= 'border : 1px; border-style: solid; border-color: #c4c4c4; background-color : #ffffff;';
+            $(function () {
+
+                $("#color-pink").click(function () {
+
+                    const element = document.getElementById("downloadImage");
+                    element.style.cssText= 'background-color : #ff9797';
+                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
+
+
+                });
+
+                $("#color-yellow").click(function () {
+
+                    const element = document.getElementById("downloadImage");
+                    element.style.cssText= 'background-color : #ffcc00';
+                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
+
+
+                });
+                $("#color-mint").click(function () {
+
+                    const element = document.getElementById("downloadImage");
+                    element.style.cssText= 'background-color : #7bcabf';
+                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
+
+                });
+                $("#color-purple").click(function () {
+
+                    const element = document.getElementById("downloadImage");
+                    element.style.cssText= 'background-color : #c08bbc';
+                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
+
+                });
+                $("#color-white").click(function () {
+                    const element = document.getElementById("downloadImage");
+                    element.style.cssText= 'border : 1px; border-style: solid; border-color: #c4c4c4; background-color : #ffffff';
+                    document.getElementById("logo-text").style.cssText= 'color: #b0b0b0';
+                    document.getElementById("logo-text").style.cssText= 'color: #b0b0b0';
                 });
 
             });

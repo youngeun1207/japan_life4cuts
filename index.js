@@ -19,5 +19,6 @@ function loadFile(input, num) {
     else{
         container.appendChild(newImage);
     }
+    document.getElementById("upload-button" + String(num)).style.cssText= 'opacity: 0;'
     // container.appendChild(newImage);
 };
