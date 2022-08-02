@@ -1,0 +1,19 @@
+{
+  "name": "japan_life4cuts",
+  "version": "1.0.0",
+  "description": "글로벌디자인실습 인생네컷 만들기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngeun1207/japan_life4cuts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youngeun1207/japan_life4cuts/issues"
+  },
+  "homepage": "https://github.com/youngeun1207/japan_life4cuts#readme"
+}
