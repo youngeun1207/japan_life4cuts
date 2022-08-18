@@ -44,6 +44,7 @@ input {
     padding-top: 10px;
     height: 6in;
     width: 2in;
+    box-sizing: border-box;
 }
 
 .white-box {
@@ -55,8 +56,16 @@ input {
     position: relative;
 }
 
+.date-text {
+    margin-top: 15px;
+    font-size: 4px;
+    color: white;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
 .logo-text {
-    margin-top: 30px;
+    margin-top: 5px;
     font-size: 20px;
     color: white;
     text-align: center;

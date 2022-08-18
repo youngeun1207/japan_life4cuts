@@ -56,14 +56,16 @@ function handleColorClick(event) {
     if (color == 'rgb(255, 255, 255)') {
         element.style.cssText = 'border : 1px; border-style: solid; border-color: #c4c4c4;';
         document.getElementById("logo-text").style.cssText = 'color: #b0b0b0';
+        document.getElementById("date-text").style.cssText = 'color: #b0b0b0';
     } else {
         element.style.cssText = 'border : none';
         document.getElementById("logo-text").style.cssText = 'color: #ffffff';
+        document.getElementById("date-text").style.cssText = 'color: #ffffff';
     }
     element.style.backgroundColor = color;
 }
 
-function init(){
+function init() {
     const saveBtn = document.getElementById('save');
     const printBtn = document.getElementById('print');
     const colorBtn = document.getElementsByClassName('color-palette');
@@ -71,6 +73,13 @@ function init(){
     Array.from(colorBtn).forEach(color => color.addEventListener("click", handleColorClick));
     printBtn.addEventListener("click", divPrint);
     saveBtn.addEventListener("click", saveImage);
+
+    let today = new Date();
+
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+    document.getElementById('date-text').innerText = year + "." + month + "." + date;
 }
 
 window.onload = function () {
