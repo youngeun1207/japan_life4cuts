@@ -13,12 +13,71 @@ function loadFile(input, num) {
     var image_num = 'image-show' + String(num);
     console.log(image_num);
     var container = document.getElementById(image_num);
-    if(container.childElementCount > 0){
+    if (container.childElementCount > 0) {
         container.replaceChild(newImage, container.lastElementChild);
     }
-    else{
+    else {
         container.appendChild(newImage);
     }
-    document.getElementById("upload-button" + String(num)).style.cssText= 'opacity: 0;'
+    document.getElementById("upload-button" + String(num)).style.cssText = 'opacity: 0;'
     // container.appendChild(newImage);
 };
+
+function divPrint() {
+    const initBody = document.body.innerHTML;
+    window.onbeforeprint = function () {
+        document.body.innerHTML = document.getElementById('print-div').innerHTML;
+    }
+    window.onafterprint = function () {
+        document.body.innerHTML = initBody;
+        init();
+    }
+    window.print();
+}
+
+function saveImage() {
+    console.log("test");
+    html2canvas($("#downloadImage"), {
+        useCORS: true,
+        onrendered: function (canvas) {
+            canvas.toBlob(function (blob) {
+                saveAs(blob, 'image.png');
+            });
+
+        }
+    });
+}
+
+function handleColorClick(event) {
+    console.log("test");
+    const color = event.target.style.backgroundColor;
+    const element = document.getElementById("downloadImage");
+
+    if (color == 'rgb(255, 255, 255)') {
+        element.style.cssText = 'border : 1px; border-style: solid; border-color: #c4c4c4;';
+        document.getElementById("logo-text").style.cssText = 'color: #b0b0b0';
+    } else {
+        element.style.cssText = 'border : none';
+        document.getElementById("logo-text").style.cssText = 'color: #ffffff';
+    }
+    element.style.backgroundColor = color;
+}
+
+function init(){
+    const saveBtn = document.getElementById('save');
+    const printBtn = document.getElementById('print');
+    const colorBtn = document.getElementsByClassName('color-palette');
+
+    Array.from(colorBtn).forEach(color => color.addEventListener("click", handleColorClick));
+    printBtn.addEventListener("click", divPrint);
+    saveBtn.addEventListener("click", saveImage);
+}
+
+window.onload = function () {
+    init();
+}
+
+
+
+
+

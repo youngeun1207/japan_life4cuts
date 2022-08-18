@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+div,body { 
+    print-color-adjust: exact !important;
+}
+
+html {
+    height: 100%;
+}
+
+@media print{
+    .target {
+      print-color-adjust: exact !important;
+    }
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    cursor: pointer;
+    font-size: 1em;
+}
+
+input {
+    visibility: hidden;
+}
+
+.image-show {
+    overflow: hidden;
+    position: absolute;
+}
+
+.background-box {
+    background-color: black;
+    margin: auto;
+    padding-top: 10px;
+    height: 6in;
+    width: 2in;
+}
+
+.white-box {
+    margin: auto;
+    background-color: white;
+    height: 1.2in;
+    width: 1.8in;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.logo-text {
+    margin-top: 30px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.btn {
+    width: 70px;
+    height: 30px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    margin-right: 5px;
+    float: left;
+}
+
+.color-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: none;
+    float: right;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+.upload-button {
+    text-align: center;
+    line-height: 1.2in;
+    position: absolute;
+    background-color: gray;
+    opacity: 0.2;
+    height: 1.2in;
+    width: 1.8in;
+}
+
+.btn-container {
+    margin-bottom: 10px;
+}
+
+.image-upload {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: absolute;
+}

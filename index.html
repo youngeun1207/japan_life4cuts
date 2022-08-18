@@ -5,109 +5,9 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
     <script
-        src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-        html {
-            height: 100%;
-        }
-
-        .container {
-            display: flex;
-            height: 100%;
-            flex-direction: column;
-        }
-
-        .button {
-            display: flex;
-            justify-content: center;
-        }
-
-        label {
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        input {
-            visibility: hidden;
-        }
-
-        .image-show {
-            overflow: hidden;
-            position:absolute;
-        }
-
-        .background-box {
-            background-color: black;
-            margin: auto;
-            padding-top: 10px;
-            height: 6in;
-            width: 2in;
-        }
-
-        .white-box {
-            margin: auto;
-            background-color: white;
-            height: 1.2in;
-            width: 1.8in;
-            margin-bottom: 10px;
-            position:relative;
-        }
-
-        .logo-text {
-            margin-top: 30px;
-            font-size: 20px;
-            color: white;
-            text-align: center;
-            font-family: 'Nanum Gothic', sans-serif;
-        }
-
-        .btn {
-            width: 70px;
-            height: 30px;
-            color: white;
-            background-color: black;
-            text-align: center;
-            border-radius: 15px;
-            border: none;
-            margin-right: 5px;
-            float: left;
-        }
-
-        .color-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 15px;
-            border: none;
-            float: right;
-            margin-right: 5px;
-        }
-
-        .upload-button {
-            text-align: center;
-            line-height: 1.2in;
-            position:absolute;
-            background-color: gray;
-            opacity: 0.2;
-            height: 1.2in;
-            width: 1.8in;
-        }
-
-        .btn-container {
-            margin-bottom: 10px;
-        }
-
-        .image-upload {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 20px;
-            position:absolute;
-        }
-
-    </style>
+        src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script> 
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
 </head>
 
 <body>
@@ -115,118 +15,52 @@
         <div class="btn-container">
             <button class="btn" onClick="window.location.reload()">refresh</button>
             <button class="btn" id="save">save</button>
+            <button class="btn" id="print">print</button>
 
-            <button class="color-btn" id="color-pink"></button>
-            <button class="color-btn" id="color-yellow"></button>
-            <button class="color-btn" id="color-mint"></button>
-            <button class="color-btn" id="color-purple"></button>
-            <button class="color-btn" id="color-white"></button>
-        </div>
-        <div class="background-box" id="downloadImage">
-            <div class="white-box">
-                <div class="image-show" id="image-show1"></div>
-                <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile1" class="upload-button" id="upload-button1">Click Here</label>
-                    <input type="file" id="chooseFile1" name="chooseFile" accept="image/*" onchange="loadFile(this, 1)">
-                </form>
-            </div>
-            <div class="white-box">
-                <div class="image-show" id="image-show2"></div>
-                <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile2" class="upload-button" id="upload-button2">Click Here</label>
-                    <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile(this, 2)">
-                </form>
-            </div>
-            <div class="white-box">
-                <div class="image-show" id="image-show3"></div>
-                <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile3" class="upload-button" id="upload-button3">Click Here</label>
-                    <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile(this, 3)">
-                </form>
-            </div>
-            <div class="white-box">
-                <div class="image-show" id="image-show4"></div>
-                <form method="post" enctype="multipart/form-data">
-                    <label for="chooseFile4" class="upload-button" id="upload-button4">Click Here</label>
-                    <input type="file" id="chooseFile4" name="chooseFile" accept="image/*" onchange="loadFile(this, 4)">
-                </form>
-            </div>
-            <div class="logo-text" id="logo-text" >
-                Life 4 Cuts
+            <div class="color-palette">
+                <div class="color-btn" id="color-pink" style="background-color : #ff9797;"></div>
+                <div class="color-btn" id="color-yellow" style="background-color : #ffcc00;"></div>
+                <div class="color-btn" id="color-mint" style="background-color : #7bcabf;"></div>
+                <div class="color-btn" id="color-purple" style="background-color : #c08bbc;"></div>
+                <div class="color-btn" id="color-white" style="background-color : #ffffff; border : 1px; border-style: solid; border-color: #c4c4c4;"></div>
+                <div class="color-btn" id="color-black" style="background-color : #000000;"></div>
             </div>
         </div>
-        <script src="index.js"></script>
-        <script type="text/javascript">
-
-            $(function () {
-
-                $("#save").click(function () {
-
-                    html2canvas($("#downloadImage"), {
-                        useCORS: true,
-                        onrendered: function (canvas) {
-                            canvas.toBlob(function (blob) {
-                                saveAs(blob, 'image.png');
-                            });
-
-                        }
-
-                    });
-
-                });
-
-            });
-
-        </script>
-        <script type="text/javascript">
-            document.getElementById("color-pink").style.cssText= 'background-color : #ff9797;';
-            document.getElementById("color-yellow").style.cssText= 'background-color : #ffcc00;';
-            document.getElementById("color-mint").style.cssText= 'background-color : #7bcabf;';
-            document.getElementById("color-purple").style.cssText= 'background-color : #c08bbc;';
-            document.getElementById("color-white").style.cssText= 'border : 1px; border-style: solid; border-color: #c4c4c4; background-color : #ffffff;';
-            $(function () {
-
-                $("#color-pink").click(function () {
-
-                    const element = document.getElementById("downloadImage");
-                    element.style.cssText= 'background-color : #ff9797';
-                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
-
-
-                });
-
-                $("#color-yellow").click(function () {
-
-                    const element = document.getElementById("downloadImage");
-                    element.style.cssText= 'background-color : #ffcc00';
-                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
-
-
-                });
-                $("#color-mint").click(function () {
-
-                    const element = document.getElementById("downloadImage");
-                    element.style.cssText= 'background-color : #7bcabf';
-                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
-
-                });
-                $("#color-purple").click(function () {
-
-                    const element = document.getElementById("downloadImage");
-                    element.style.cssText= 'background-color : #c08bbc';
-                    document.getElementById("logo-text").style.cssText= 'color: #ffffff';
-
-                });
-                $("#color-white").click(function () {
-                    const element = document.getElementById("downloadImage");
-                    element.style.cssText= 'border : 1px; border-style: solid; border-color: #c4c4c4; background-color : #ffffff';
-                    document.getElementById("logo-text").style.cssText= 'color: #b0b0b0';
-                    document.getElementById("logo-text").style.cssText= 'color: #b0b0b0';
-                });
-
-            });
-
-        </script>
+        <div id="print-div">
+            <div class="background-box" id="downloadImage">
+                <div class="white-box">
+                    <div class="image-show" id="image-show1"></div>
+                    <form method="post" enctype="multipart/form-data">
+                        <label for="chooseFile1" class="upload-button" id="upload-button1">Click Here</label>
+                        <input type="file" id="chooseFile1" name="chooseFile" accept="image/*" onchange="loadFile(this, 1)">
+                    </form>
+                </div>
+                <div class="white-box">
+                    <div class="image-show" id="image-show2"></div>
+                    <form method="post" enctype="multipart/form-data">
+                        <label for="chooseFile2" class="upload-button" id="upload-button2">Click Here</label>
+                        <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile(this, 2)">
+                    </form>
+                </div>
+                <div class="white-box">
+                    <div class="image-show" id="image-show3"></div>
+                    <form method="post" enctype="multipart/form-data">
+                        <label for="chooseFile3" class="upload-button" id="upload-button3">Click Here</label>
+                        <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile(this, 3)">
+                    </form>
+                </div>
+                <div class="white-box">
+                    <div class="image-show" id="image-show4"></div>
+                    <form method="post" enctype="multipart/form-data">
+                        <label for="chooseFile4" class="upload-button" id="upload-button4">Click Here</label>
+                        <input type="file" id="chooseFile4" name="chooseFile" accept="image/*" onchange="loadFile(this, 4)">
+                    </form>
+                </div>
+                <div class="logo-text" id="logo-text">
+                    Life 4 Cut
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
